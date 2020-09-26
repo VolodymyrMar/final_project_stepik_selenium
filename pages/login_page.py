@@ -10,7 +10,7 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         assert self.browser.current_url in "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/", \
-                                            "Login link is not presented"
+            "Login link is not presented"
 
     def should_be_login_form(self):
         self.browser.find_element(*LoginPageLocators.LOGIN_LINK).click()
