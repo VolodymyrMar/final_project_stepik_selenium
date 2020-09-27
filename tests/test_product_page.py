@@ -16,21 +16,31 @@ link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 #     assert page.compare_product_name_in_basket(), "Wrong name product added to basket"
 #     assert page.compare_product_price_in_basket(), "Wrong price product added to basket"
 
-@pytest.mark.xfail
-def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
-    page = ProductPage(browser, link)
-    page.open()
-    page.add_to_basket()
-    page.should_not_be_success_message()
+# @pytest.mark.xfail
+# def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+#     page = ProductPage(browser, link)
+#     page.open()
+#     page.add_to_basket()
+#     page.should_not_be_success_message()
+#
+# def test_guest_cant_see_success_message(browser):
+#     page = ProductPage(browser, link)
+#     page.open()
+#     page.should_not_be_success_message()
+#
+# @pytest.mark.xfail
+# def test_message_disappeared_after_adding_product_to_basket(browser):
+#     page = ProductPage(browser, link)
+#     page.open()
+#     page.add_to_basket()
+#     page.should_be_is_disappeared()
 
-def test_guest_cant_see_success_message(browser):
+def test_guest_should_see_login_link_on_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
-    page.should_not_be_success_message()
+    page.should_be_login_link()
 
-@pytest.mark.xfail
-def test_message_disappeared_after_adding_product_to_basket(browser):
+def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
-    page.add_to_basket()
-    page.should_be_is_disappeared()
+    page.go_to_login_page()
