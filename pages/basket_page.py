@@ -3,9 +3,8 @@ from .locators import BasePageLocators
 
 
 class BasketPage(BasePage):
-    def go_to_basket_page(self):
-        self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
-
-
-    def is_basket_empty(self):
+    def should_be_basket_empty(self):
         assert self.is_element_present(*BasePageLocators.BASKET_EMPTY), "Basket is not empty"
+
+    def should_be_not_products_in_cart(self):
+        assert self.is_not_element_present(*BasePageLocators.ITEMS_IN_BASKET), "Basket is not empty"
